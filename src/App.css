@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+@layer base {
+  @font-face {
+    font-family: 'Geist-mono';
+    src: url(/src/assets/fonts/Geist.Mono/GeistMono-Regular.otf) format('otf')
+         url(/src/assets/fonts/Geist.Mono/GeistMono-Regular.woff) format('woff');
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Geist-mono';
+    src: url(/src/assets/fonts/Geist.Mono/GeistMono-Bold.otf) format('otf')
+         url(/src/assets/fonts/Geist.Mono/GeistMono-Bold.woff) format('woff');
+    font-style: bold;
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Geist-mono';
+    src: url(/src/assets/fonts/Geist.Mono/GeistMono-Italic.otf) format('otf')
+         url(/src/assets/fonts/Geist.Mono/GeistMono-Italic.woff) format('woff');
+    font-style: italic;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Geist';
+    src: url(/src/assets/fonts/Geist/Geist-Thin.otf) format('otf')
+         url(/src/assets/fonts/Geist/Geist-Thin.woff) format('woff');
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Geist';
+    src: url(/src/assets/fonts/Geist/Geist-Light.otf) format('otf')
+         url(/src/assets/fonts/Geist/Geist-Light.woff) format('woff');
+    font-style: bold;
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Geist';
+    src: url(/src/assets/fonts/Geist/Geist-Italic.otf) format('otf')
+         url(/src/assets/fonts/Geist/Geist-Italic.woff) format('woff');
+    font-style: italic;
+    font-weight: 400;
+  }
+}

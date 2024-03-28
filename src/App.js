@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import TriviaGame from './components/1st Game/TriviaGame';
+import WordSearch from './components/2nd Game/WordSearch';
+import MemoryGame from './components/3rd Game/MemoryGame';
+import DecipherGame from './components/4th Game/DecypherGame';
+import RiddleGame from './components/5th Game/RiddleGame';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/trivia" element={<TriviaGame />} />
+        <Route path="/wordsearch" element={<WordSearch />} />
+        <Route path="/memory" element={<MemoryGame />} />
+        <Route path="/decryption" element={<DecipherGame />} />
+        <Route path="/riddle" element={<RiddleGame />} />
+      </Routes>
+    </Router>
   );
 }
 
