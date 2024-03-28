@@ -97,7 +97,7 @@ const MemoryGame = () => {
         ))}
       </div>
       <div className="mt-4 text-center text-xl font-bold">
-        <p>find the pairs 😉</p>
+        <p>find the pairs</p>
       </div>
       {/* <button
         onClick={() => navigate("/")}
