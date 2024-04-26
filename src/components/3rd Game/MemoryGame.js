@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import updateProgression from "../UpdateProgression";
 import ReturnHomeButton from "../ReturnHomeButton";
-import casahistorica from '../../assets/images/casahistorica.jpeg';
-import cheguSan from '../../assets/images/chegusan.jpeg';
-import gordillo from '../../assets/images/gordillo.jpg';
-import messi from '../../assets/images/messi.jpeg';
-import numero1 from '../../assets/images/numero1.jpeg';
-import portal from '../../assets/images/portal.jpeg';
-import villeco from '../../assets/images/villeco.jpeg';
-import virgencita from '../../assets/images/virgencita.jpeg';
+import casahistorica from '../../assets/images/dino.png';
+import cheguSan from '../../assets/images/duo.png';
+import gordillo from '../../assets/images/vioelta.jpeg';
+import messi from '../../assets/images/jess.jpeg';
+import numero1 from '../../assets/images/mate.jpeg';
+import portal from '../../assets/images/chickens.jpeg';
+import villeco from '../../assets/images/alfajor.jpeg';
+import virgencita from '../../assets/images/two.jpeg';
 import Confetti from "react-confetti";
 
 const cardsData = [
@@ -75,7 +75,7 @@ const MemoryGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">esa vanesaaaaa</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4">girl are you gonna eat that scone?</h1>
         </div>
       )}
       <h1 className="text-center text-5xl font-bold font-geistmono mb-8">memory game</h1>
@@ -99,12 +99,6 @@ const MemoryGame = () => {
       <div className="mt-4 text-center text-xl font-bold">
         <p>find the pairs</p>
       </div>
-      {/* <button
-        onClick={() => navigate("/")}
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[10%] self-center transition duration-300"
-      >
-        Back to Home
-      </button> */}
     </div>
   );
 };

@@ -6,39 +6,39 @@ import Confetti from "react-confetti";
 
 const questions = [
   {
-    question: "a qué ciudad se conoce como la perla del sur?",
+    question: "what's the book i never read?",
     answers: [
-      { text: "concepción", isCorrect: true },
-      { text: "famailla", isCorrect: false },
-      { text: "monteros", isCorrect: false },
-      { text: "aguilares", isCorrect: false },
+      { text: "violeta", isCorrect: true },
+      { text: "siddharta", isCorrect: false },
+      { text: "the bible", isCorrect: false },
+      { text: "i've read everything", isCorrect: false },
     ],
   },
   {
-    question: "que heladeria tiene el mejor helado de limon?",
+    question: "what's my actual last name?",
     answers: [
-      { text: "tello", isCorrect: false },
-      { text: "blue bell", isCorrect: true },
-      { text: "grido", isCorrect: false },
-      { text: "luchianos", isCorrect: false },
+      { text: "perez herrera", isCorrect: false },
+      { text: "perez herrero", isCorrect: true },
+      { text: "peres herrero", isCorrect: false },
+      { text: "prz hrrro", isCorrect: false },
     ],
   },
   {
-    question: "cual es la palabra que más usos tiene?",
+    question: "what's the word that goes well with 'cogeme...'",
     answers: [
-      { text: "cageta", isCorrect: false },
-      { text: "ura", isCorrect: false },
-      { text: "aca", isCorrect: true },
-      { text: "chango", isCorrect: false },
+      { text: "suave", isCorrect: false },
+      { text: "duro", isCorrect: false },
+      { text: "all the options", isCorrect: true },
+      { text: "fuerte", isCorrect: false },
     ],
   },
   {
-    question: "el santo y el deca...",
+    question: "is that a mockingbird?",
     answers: [
-      { text: "son tremendos", isCorrect: false },
-      { text: "siempre pierden", isCorrect: false },
-      { text: "siempre ganan", isCorrect: true },
-      { text: "y esos?", isCorrect: false },
+      { text: "yes it is", isCorrect: false },
+      { text: "nope", isCorrect: false },
+      { text: "is that a mockingbird?", isCorrect: true },
+      { text: "i think it's a blackbird", isCorrect: false },
     ],
   },
   // Add more questions here
@@ -56,9 +56,9 @@ const TriviaGame = () => {
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
-      setAlert({ type: "success", message: "bien ahí nerd" });
+      setAlert({ type: "success", message: "look at you nerd" });
     } else {
-      setAlert({ type: "error", message: "cómo va decí eso atao?" });
+      setAlert({ type: "error", message: "bitch, what?" });
     }
 
     setTimeout(() => {
@@ -81,18 +81,6 @@ const TriviaGame = () => {
     }, 2000);
   };
 
-  const restartGame = () => {
-    setCurrentQuestionIndex(0);
-    setShowScore(false);
-    setScore(0);
-
-    const completedGames = JSON.parse(
-      localStorage.getItem("completedGames") || "{}"
-    );
-    completedGames["trivia"] = false;
-    localStorage.setItem("completedGames", JSON.stringify(completedGames));
-  };
-
   return (
     <div className="container">
       <ReturnHomeButton />
@@ -110,45 +98,30 @@ const TriviaGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">vamo el deca</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4">
+            can't believe you got my last name right
+          </h1>
         </div>
       )}
-      {showScore ? (
-        <div className="container text-center">
-          <div className="text-2xl font-semibold pb-4">
-            Score: {score} out of {questions.length}
-          </div>
-          <div className="text-lg">
+      <div className="mini-container space-y-16">
+        <div className="text-2xl font-bold text-center font-geistmono">
+          question {currentQuestionIndex + 1} of {questions.length}
+        </div>
+        <div className="text-3xl font-bold font-geistmono text-center">
+          {questions[currentQuestionIndex].question}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {questions[currentQuestionIndex].answers.map((answer, index) => (
             <button
-              onClick={restartGame}
-              className="ml-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300"
+              key={index}
+              onClick={() => handleAnswerButtonClick(answer.isCorrect)}
+              className={`bg-transparent border-2 text-white p-4 rounded hover:bg-white hover:text-black transition duration-300 text-xl font-geist`}
             >
-              Restart Game
+              {answer.text}
             </button>
-          </div>
-          {/* Optionally, add a button to restart the game */}
+          ))}
         </div>
-      ) : (
-        <div className="mini-container space-y-16">
-          <div className="text-2xl font-bold text-center font-geistmono">
-            question {currentQuestionIndex + 1} of {questions.length}
-          </div>
-          <div className="text-3xl font-bold font-geistmono text-center">
-            {questions[currentQuestionIndex].question}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {questions[currentQuestionIndex].answers.map((answer, index) => (
-              <button
-                key={index}
-                onClick={() => handleAnswerButtonClick(answer.isCorrect)}
-                className={`bg-transparent border-2 text-white p-4 rounded hover:bg-white hover:text-black transition duration-300 text-xl font-geist`}
-              >
-                {answer.text}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import ProgressBar from "./ProgressBar";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import checkAllGamesCompleted from "../components/AllGamesCompleted";
-import rickVideo from "../assets/videos/rick.mp4";
+import rickVideo from "../assets/videos/videoplayback.mp4";
 import {
   faBrain,
   faPuzzlePiece,
@@ -67,7 +67,7 @@ const HomePage = () => {
                 : "bg-transparent border-2 border-white text-white"
             }`}
           >
-            <FontAwesomeIcon icon={game.icon} size="2x" />{" "}
+            <FontAwesomeIcon icon={game.icon} size="2x" />
           </Link>
         ))}
       </div>
@@ -75,7 +75,7 @@ const HomePage = () => {
       {allGamesCompleted && (
         <button
           onClick={resetProgress}
-          className="bg-transparent text-red-500 border-2 border-red-500 font-bold py-2 px-4 rounded w-[25%] self-center transition duration-300"
+          className="bg-transparent text-red-500 border-2 border-red-500 font-bold mt-2 py-2 px-4 rounded w-[25%] self-center transition duration-300"
         >
           Reset Progress
         </button>

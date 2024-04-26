@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 
 const words = [
-  "CHEGUSAN",
-  "TAFI",
-  "FAMAILLA",
+  "BOOSEGUMPS",
   "URA",
-  "EMPANADA",
-  "CUBANITO",
-  "BLUEBELL",
-  "PIZZANESA",
+  "GEMUTLICH",
+  "RAMON",
+  "SALIDU",
+  "SANTPOL",
+  "BREAKFAST",
+  "MOCKINGBIRD",
 ];
 
 const WordSearch = () => {
@@ -78,18 +78,18 @@ const WordSearch = () => {
 
   const initializeFixedGrid = () => {
     const gridTemplate = [
-      ["C", "H", "E", "G", "U", "S", "A", "N", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
-      ["F", "-", "C", "-", "-", "-", "-", "-", "-", "-", "E", "-"],
-      ["A", "-", "U", "-", "-", "-", "-", "-", "-", "-", "M", "-"],
-      ["M", "-", "B", "L", "U", "E", "B", "E", "L", "L", "P", "-"],
-      ["A", "-", "A", "-", "-", "R", "-", "-", "-", "-", "A", "-"],
-      ["I", "-", "N", "-", "-", "-", "A", "-", "I", "-", "N", "-"],
-      ["L", "-", "I", "-", "-", "-", "-", "-", "F", "-", "A", "-"],
-      ["L", "E", "T", "T", "E", "R", "S", "-", "A", "-", "D", "-"],
-      ["A", "-", "O", "-", "-", "-", "-", "-", "T", "-", "A", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
-      ["P", "I", "Z", "Z", "A", "N", "E", "S", "A", "-", "-", "-"],
+      ["M", "O", "C", "K", "I", "N", "G", "B", "I", "R", "D", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "O", "-", "-", "-", "-"],
+      ["-", "-", "S", "A", "N", "T", "P", "O", "L", "-", "-", "B"],
+      ["-", "-", "A", "-", "-", "-", "-", "S", "-", "-", "-", "R"],
+      ["-", "-", "L", "-", "-", "-", "-", "E", "-", "A", "-", "E"],
+      ["-", "-", "I", "-", "-", "R", "-", "G", "R", "-", "-", "A"],
+      ["-", "-", "D", "-", "-", "-", "A", "U", "-", "-", "-", "K"],
+      ["-", "-", "U", "-", "-", "-", "-", "M", "-", "-", "-", "F"],
+      ["-", "-", "-", "-", "-", "-", "-", "P", "O", "-", "-", "A"],
+      ["-", "-", "-", "-", "-", "-", "-", "S", "-", "N", "-", "S"],
+      ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "T"],
+      ["G", "E", "M", "U", "T", "L", "I", "C", "H", "-", "-", "-"],
     ];
 
     const filledGrid = gridTemplate.map((row, rowIndex) =>
@@ -149,7 +149,7 @@ const WordSearch = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">se viene una tormenta eletrónica</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4">oooohhh frau smartypants</h1>
         </div>
       )}
       <h1 className="text-5xl font-bold font-geistmono mb-4">find the words</h1>

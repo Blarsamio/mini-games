@@ -7,14 +7,14 @@ import Confetti from "react-confetti";
 const riddles = [
   {
     riddle:
-      "me visto de gala para trabajar en la calle y traer alegria a los mas chicos",
-    options: ["payaso tapatin", "trava del parque", "cubanitero", "tu mama"],
+      "In a world of beginnings, I stand by, guiding new stars to the sky. Neither mother nor nurse by trade, yet in birth's magic, my hands are laid. I whisper wisdom, calm, and light, Through the darkest hours of the night. In life's first cry, my joy is found, Yet my name's not uttered, a silent sound.",
+    options: ["doctor", "doula", "midwife", "what did you smoke pato?"],
     answer: 2,
   },
   {
-    riddle: "soy dulce y duro, a veces un nudo, a veces no",
-    options: ["esta", "alfeñique", "no sé", "caramelo"],
-    answer: 1,
+    riddle: "i thought you woul've guessed the first one so I didn't prepare anything for this one",
+    options: ["colt .45", "two zig zags", "baby", "that's all I need"],
+    answer: 0,
   },
 ];
 
@@ -43,12 +43,12 @@ const RiddleGame = () => {
       }, 3000);
     } else {
       if (attempts >= 1) {
-        showAlert("error", "ah, so pillo vo'");
+        showAlert("error", "nopeee");
         const nextRiddleIndex = (currentRiddleIndex + 1) % riddles.length;
         setCurrentRiddleIndex(nextRiddleIndex);
         setAttempts(0);
       } else {
-        showAlert("error", "cómo va decí eso ura");
+        showAlert("error", "are you ouf of your mind?");
         setAttempts(attempts + 1);
       }
     }
@@ -60,7 +60,7 @@ const RiddleGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">vamo lo pibeeeee</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4">no shit sherlock</h1>
         </div>
       )}
       {alert && (

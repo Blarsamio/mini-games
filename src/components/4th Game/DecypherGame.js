@@ -42,7 +42,7 @@ const DecipherGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">no te dicen cerebrito por nada a vo</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4">daaaamn mrs. schiltknecht, you on fire guuurrl</h1>
         </div>
       )}
       <h1 className="text-4xl font-bold font-geistmono">decypher the message</h1>
@@ -55,7 +55,7 @@ const DecipherGame = () => {
         type="text"
         value={guess}
         onChange={handleGuessChange}
-        placeholder="hint: shift by 3"
+        placeholder="hint: h equals to e because => from e to h there are 3 spaces, do the same for the rest"
         className="p-2 border border-gray-300 w-3/4 bg-white text-black font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-50"
       />
 
