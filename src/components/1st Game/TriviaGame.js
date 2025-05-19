@@ -6,39 +6,39 @@ import Confetti from "react-confetti";
 
 const questions = [
   {
-    question: "what's the book i never read?",
+    question: "What is Justus Jonas' nickname among the three detectives?",
     answers: [
-      { text: "violeta", isCorrect: true },
-      { text: "siddharta", isCorrect: false },
-      { text: "the bible", isCorrect: false },
-      { text: "i've read everything", isCorrect: false },
+      { text: "Chef", isCorrect: true },
+      { text: "Der Flüsterer", isCorrect: false },
+      { text: "Bossman", isCorrect: false },
+      { text: "Professor", isCorrect: false },
     ],
   },
   {
-    question: "what's my actual last name?",
+    question: "Which character is a scientist and often helps the boys with technical problems?",
     answers: [
-      { text: "perez herrera", isCorrect: false },
-      { text: "perez herrero", isCorrect: true },
-      { text: "peres herrero", isCorrect: false },
-      { text: "prz hrrro", isCorrect: false },
+      { text: "Dr. Franklin", isCorrect: false },
+      { text: "Professor Augustus", isCorrect: true },
+      { text: "Professor Shy", isCorrect: false },
+      { text: "Herr Marvin", isCorrect: false },
     ],
   },
   {
-    question: "what's the word that goes well with 'cogeme...'",
+    question: "What is the secret entrance to Die Drei ??? headquarters?",
     answers: [
-      { text: "suave", isCorrect: false },
-      { text: "duro", isCorrect: false },
-      { text: "all the options", isCorrect: true },
-      { text: "fuerte", isCorrect: false },
+      { text: "Eine verschiebbare Wandplatte im Haus", isCorrect: false },
+      { text: "Durch einen Kleiderschrank", isCorrect: false },
+      { text: "Durch einen Tunnel unter einem Schrotthaufen", isCorrect: true },
+      { text: "Durch eine Falltür in einem Schuppen", isCorrect: false },
     ],
   },
   {
-    question: "is that a mockingbird?",
+    question: "Which episode is known for being unusually scary and even caused complaints from parents?",
     answers: [
-      { text: "yes it is", isCorrect: false },
-      { text: "nope", isCorrect: false },
-      { text: "is that a mockingbird?", isCorrect: true },
-      { text: "i think it's a blackbird", isCorrect: false },
+      { text: "Der Fluch des Drachen", isCorrect: false },
+      { text: "Der lachende Schatten", isCorrect: false },
+      { text: "Der Grusel auf Campbell Castle", isCorrect: true },
+      { text: "Die flüsternde Mumie", isCorrect: false },
     ],
   },
   // Add more questions here
@@ -74,7 +74,7 @@ const TriviaGame = () => {
             setShowCompletionScreen(true);
             setTimeout(() => {
               navigate("/");
-            }, 3000);
+            }, 5000);
           }
         }
       }
@@ -88,8 +88,8 @@ const TriviaGame = () => {
         <div
           className={`fixed top-10 px-4 py-2 rounded self-center font-bold ${
             alert.type === "success"
-              ? "bg-transparent border-2 border-green-500 text-green-500"
-              : "bg-transparent border-2 border-red-500 text-red-500"
+              ? "bg-green-500 border-2 border-white text-white font-bold"
+              : "bg-red-500 border-2 border-white text-white"
           }`}
         >
           {alert.message}
@@ -98,8 +98,8 @@ const TriviaGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">
-            can't believe you got my last name right
+          <h1 className="text-5xl font-bold font-geistmono mb-4 text-center">
+            You are a creep, you are a weirdo... still you passed this test!
           </h1>
         </div>
       )}

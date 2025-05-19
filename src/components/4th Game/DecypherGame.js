@@ -6,7 +6,7 @@ import Confetti from 'react-confetti';
 
 const DecipherGame = () => {
   const [guess, setGuess] = useState('');
-  const [message] = useState('hk xud qr vhdv dvl');
+  const [message] = useState('GLH GUHL ??? ÜEHUQHKPHQ MHGHQ IDOO');
   const navigate = useNavigate();
   const [showCompletionScreen, setShowCompletionScreen] = useState(false);
 
@@ -21,7 +21,7 @@ const DecipherGame = () => {
       setShowCompletionScreen(true);
       setTimeout(() => {
         navigate('/');
-      }, 3000);
+      }, 5000);
     } else {
       alert('Incorrect guess. Try again!');
     }
@@ -42,7 +42,7 @@ const DecipherGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">daaaamn mrs. schiltknecht, you on fire guuurrl</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4 text-center">Nice, you cracked it! You've earned a Caesar salad... but you need to prepare the dressing 🥗</h1>
         </div>
       )}
       <h1 className="text-4xl font-bold font-geistmono">decypher the message</h1>
@@ -55,8 +55,8 @@ const DecipherGame = () => {
         type="text"
         value={guess}
         onChange={handleGuessChange}
-        placeholder="hint: h equals to e because => from e to h there are 3 spaces, do the same for the rest"
-        className="p-2 border border-gray-300 w-3/4 bg-white text-black font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-50"
+        placeholder="Ein Fall für Cäsar - drehe das Alphabet um drei Stellen zurück, um die Wahrheit zu enthüllen (Ü = Ü)"
+        className="p-2 placeholder:text-sm border border-gray-300 w-3/4 bg-white text-black font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-50"
       />
 
       <button

@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import updateProgression from "../UpdateProgression";
 import ReturnHomeButton from "../ReturnHomeButton";
-import casahistorica from '../../assets/images/dino.png';
-import cheguSan from '../../assets/images/duo.png';
-import gordillo from '../../assets/images/vioelta.jpeg';
-import messi from '../../assets/images/jess.jpeg';
-import numero1 from '../../assets/images/mate.jpeg';
-import portal from '../../assets/images/chickens.jpeg';
-import villeco from '../../assets/images/alfajor.jpeg';
-import virgencita from '../../assets/images/two.jpeg';
+import professor from '../../assets/images/prof.png';
+import skinny from '../../assets/images/skinny.png';
+import police from '../../assets/images/police.png';
+import peter from '../../assets/images/peter.png';
+import mathilde from '../../assets/images/mathulde.png';
+import bob from '../../assets/images/bob.png';
+import justus from '../../assets/images/justus.png';
+import titus from '../../assets/images/titus.png';
 import Confetti from "react-confetti";
 
 const cardsData = [
-  { id: 1, matched: false, image: casahistorica },
-  { id: 2, matched: false, image: cheguSan },
-  { id: 3, matched: false, image: gordillo },
-  { id: 4, matched: false, image: messi },
-  { id: 5, matched: false, image: numero1 },
-  { id: 6, matched: false, image: portal },
-  { id: 7, matched: false, image: villeco },
-  { id: 8, matched: false, image: virgencita },
+  { id: 1, matched: false, image: professor },
+  { id: 2, matched: false, image: skinny },
+  { id: 3, matched: false, image: police },
+  { id: 4, matched: false, image: peter },
+  { id: 5, matched: false, image: mathilde },
+  { id: 6, matched: false, image: bob },
+  { id: 7, matched: false, image: justus },
+  { id: 8, matched: false, image: titus },
 ];
 
 const MemoryGame = () => {
@@ -43,7 +43,7 @@ const MemoryGame = () => {
       setShowCompletionScreen(true);
       setTimeout(() => {
         navigate('/');
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -75,7 +75,7 @@ const MemoryGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">girl are you gonna eat that scone?</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4 text-center">I'm truly surprised your memory let you pass this one!</h1>
         </div>
       )}
       <h1 className="text-center text-5xl font-bold font-geistmono mb-8">memory game</h1>

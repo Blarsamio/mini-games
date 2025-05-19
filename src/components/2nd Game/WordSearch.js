@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 
 const words = [
-  "BOOSEGUMPS",
-  "URA",
-  "GEMUTLICH",
-  "RAMON",
-  "SALIDU",
-  "SANTPOL",
-  "BREAKFAST",
-  "MOCKINGBIRD",
+  "ROCKYBEACH",
+  "JUSTUS",
+  "TITUS",
+  "HEADQUARTERS",
+  "SKELETONISLE",
+  "COTTA",
+  "MISTERY",
+  "SKINNY",
 ];
 
 const WordSearch = () => {
@@ -42,21 +42,38 @@ const WordSearch = () => {
     });
   };
 
+  const getLetterCount = (str) => {
+    const count = {};
+    for (const char of str) {
+      count[char] = (count[char] || 0) + 1;
+    }
+    return count;
+  };
+
   const validateSelection = () => {
     const selectedWord = currentSelection
       .map(({ rowIndex, cellIndex }) => grid[rowIndex][cellIndex].letter)
       .join("");
 
-    if (words.includes(selectedWord)) {
-      console.log(`${selectedWord} is a valid word!`);
+    const selectedCount = getLetterCount(selectedWord);
 
+    // Find a word with the same letter counts
+    const matchedWord = words.find((word) => {
+      if (word.length !== selectedWord.length) return false;
+      const wordCount = getLetterCount(word);
+      return Object.keys(wordCount).every(
+        (char) => wordCount[char] === selectedCount[char]
+      ) && Object.keys(selectedCount).every(
+        (char) => selectedCount[char] === wordCount[char]
+      );
+    });
+
+    if (matchedWord && !foundWords.some((w) => w.word === matchedWord)) {
       const newFoundWord = {
-        word: selectedWord,
+        word: matchedWord,
         positions: currentSelection,
       };
-
       setFoundWords((prevFoundWords) => [...prevFoundWords, newFoundWord]);
-
     } else {
       console.log(`${selectedWord} is not valid.`);
     }
@@ -78,18 +95,18 @@ const WordSearch = () => {
 
   const initializeFixedGrid = () => {
     const gridTemplate = [
-      ["M", "O", "C", "K", "I", "N", "G", "B", "I", "R", "D", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "O", "-", "-", "-", "-"],
-      ["-", "-", "S", "A", "N", "T", "P", "O", "L", "-", "-", "B"],
-      ["-", "-", "A", "-", "-", "-", "-", "S", "-", "-", "-", "R"],
-      ["-", "-", "L", "-", "-", "-", "-", "E", "-", "A", "-", "E"],
-      ["-", "-", "I", "-", "-", "R", "-", "G", "R", "-", "-", "A"],
-      ["-", "-", "D", "-", "-", "-", "A", "U", "-", "-", "-", "K"],
-      ["-", "-", "U", "-", "-", "-", "-", "M", "-", "-", "-", "F"],
-      ["-", "-", "-", "-", "-", "-", "-", "P", "O", "-", "-", "A"],
-      ["-", "-", "-", "-", "-", "-", "-", "S", "-", "N", "-", "S"],
-      ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "T"],
-      ["G", "E", "M", "U", "T", "L", "I", "C", "H", "-", "-", "-"],
+      ["S", "K", "E", "L", "E", "T", "O", "N", "I", "S", "L", "E"],
+      ["-", "-", "-", "-", "-", "I", "-", "-", "-", "-", "-", "-"],
+      ["R", "-", "-", "-", "-", "T", "-", "-", "-", "-", "-", "C"],
+      ["O", "-", "-", "-", "J", "U", "S", "T", "U", "S", "-", "O"],
+      ["C", "-", "-", "-", "-", "S", "-", "-", "-", "-", "-", "T"],
+      ["K", "-", "-", "-", "-", "-", "K", "-", "-", "-", "-", "T"],
+      ["Y", "-", "-", "-", "-", "-", "-", "I", "-", "-", "-", "A"],
+      ["B", "-", "-", "-", "-", "-", "-", "-", "N", "-", "-", "-"],
+      ["E", "-", "-", "-", "-", "-", "-", "-", "-", "N", "-", "-"],
+      ["A", "-", "-", "-", "M", "I", "S", "T", "E", "R", "Y", "-"],
+      ["C", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
+      ["H", "E", "A", "D", "Q", "U", "A", "R", "T", "E", "R", "S"],
     ];
 
     const filledGrid = gridTemplate.map((row, rowIndex) =>
@@ -149,7 +166,7 @@ const WordSearch = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">oooohhh frau smartypants</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4 text-center">Did you also search for words in the red tower? 🗼</h1>
         </div>
       )}
       <h1 className="text-5xl font-bold font-geistmono mb-4">find the words</h1>

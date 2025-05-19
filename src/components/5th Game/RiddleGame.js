@@ -7,35 +7,37 @@ import Confetti from "react-confetti";
 const riddles = [
   {
     riddle:
-      "In a world of beginnings, I stand by, guiding new stars to the sky. Neither mother nor nurse by trade, yet in birth's magic, my hands are laid. I whisper wisdom, calm, and light, Through the darkest hours of the night. In life's first cry, my joy is found, Yet my name's not uttered, a silent sound.",
-    options: ["doctor", "doula", "midwife", "what did you smoke pato?"],
-    answer: 2,
-  },
-  {
-    riddle: "i thought you woul've guessed the first one so I didn't prepare anything for this one",
-    options: ["colt .45", "two zig zags", "baby", "that's all I need"],
-    answer: 0,
+      "I'm not the first, nor second in line,\n" +
+      "I'm not the third, though clues are mine.\n" +
+      "My name begins where Answers start,\n" +
+      "Then comes the laugh that follows K in heart.\n" +
+      "A vowel next, not wide nor lean —\n" +
+      "The I 👀 that spies what can't be seen.\n" +
+      "And end it with a word you know,\n" +
+      "The start of Always, soft and low.\n" +
+      "Now read it close, no time to waste —\n" +
+      "Put it together, you'll know her face.",
+    answer: "alia",
   },
 ];
 
 const RiddleGame = () => {
-  const [currentRiddleIndex, setCurrentRiddleIndex] = useState(0);
+  const [currentRiddleIndex] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [alert, setAlert] = useState(null);
   const [showCompletionScreen, setShowCompletionScreen] = useState(false);
+  const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
 
-  const handleOptionClick = (optionIndex) => {
-    const showAlert = (type, message) => {
-      setAlert({ type, message });
-      setTimeout(() => {
-        setAlert(null);
-      }, 2000);
-    };
+  const handleInputChange = (e) => {
+    setUserAnswer(e.target.value);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const currentRiddle = riddles[currentRiddleIndex];
-    if (optionIndex === currentRiddle.answer) {
-      showAlert("success", "That's right!");
+    if (userAnswer.trim().toLowerCase() === currentRiddle.answer.toLowerCase()) {
+      setAlert({ type: "success", message: "That's right!" });
       updateProgression("riddle");
       setShowCompletionScreen(true);
       setTimeout(() => {
@@ -43,15 +45,15 @@ const RiddleGame = () => {
       }, 3000);
     } else {
       if (attempts >= 1) {
-        showAlert("error", "nopeee");
-        const nextRiddleIndex = (currentRiddleIndex + 1) % riddles.length;
-        setCurrentRiddleIndex(nextRiddleIndex);
+        setAlert({ type: "error", message: "nopeee" });
         setAttempts(0);
       } else {
-        showAlert("error", "are you ouf of your mind?");
+        setAlert({ type: "error", message: "are you ouf of your mind?" });
         setAttempts(attempts + 1);
       }
+      setTimeout(() => setAlert(null), 2000);
     }
+    setUserAnswer("");
   };
 
   return (
@@ -60,7 +62,7 @@ const RiddleGame = () => {
       {showCompletionScreen && (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
           <Confetti width={window.width} height={window.height} />
-          <h1 className="text-5xl font-bold font-geistmono mb-4">no shit sherlock</h1>
+          <h1 className="text-5xl font-bold font-geistmono mb-4 text-center">No shit Sherlock! 🧐</h1>
         </div>
       )}
       {alert && (
@@ -78,21 +80,25 @@ const RiddleGame = () => {
         solve this riddle
       </h1>
 
-      <div className="p-4 border-2 border-white w-3/4 font-bold text-center rounded self-center">
+      <div className="p-4 border-2 border-white w-3/4 font-bold text-center rounded self-center whitespace-pre-line">
         {riddles[currentRiddleIndex].riddle}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4 self-center">
-        {riddles[currentRiddleIndex].options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => handleOptionClick(index)}
-            className="bg-transparent border-2 border-white text-white py-2 px-4 font-bold rounded hover:text-black hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-          >
-            {option}
-          </button>
-        ))}
-      </div>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center mt-4">
+        <input
+          type="text"
+          value={userAnswer}
+          onChange={handleInputChange}
+          placeholder="Type your answer"
+          className="p-2 border border-gray-300 w-3/4 bg-white text-black font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-50 mb-2"
+        />
+        <button
+          type="submit"
+          className="bg-transparent border-2 border-white text-white py-2 px-4 font-bold rounded hover:text-black hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
